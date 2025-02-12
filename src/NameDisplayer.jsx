@@ -10,7 +10,11 @@ const NameDisplayer = () =>{
         const [fullName,setFullName] = useState("");
         const handleSubmit = (e) =>{
             e.preventDefault();
-            setFullName(`${firstName} ${lastName}`)
+            if (firstName && lastName) {
+                setFullName(`${firstName} ${lastName}`);
+              } else {
+                setFullName("");  
+              }
 
         }
 
@@ -36,12 +40,10 @@ const NameDisplayer = () =>{
                 </button>
                 </div>
             </form>
-          <div>
-          {fullName && (
             <div className='p-2 flex items-center'>
-            <h5 className=' font-serif ...'>Full Name : {fullName}</h5>
-           
-            </div>
+          {fullName && (
+            <h5 className=' font-serif ...'>Full Name: {fullName}</h5>
+       
             )}
           </div>
         </div>
