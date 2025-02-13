@@ -9,11 +9,11 @@ const NameDisplayer = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!e.target.checkValidity()) {
-            // If the form is not valid, let the browser handle the validation message
-            e.target.reportValidity();
-            return;
-        }
+            // Prevent submission if any field is empty
+            if (!firstName || !lastName) {
+                setFullName(null);  // Ensure <h5> does not exist in DOM
+                return;
+            }
         // If both fields have values, show the full name, else reset fullName
         if (firstName && lastName) {
             setFullName(`${firstName} ${lastName}`); // Set full name
